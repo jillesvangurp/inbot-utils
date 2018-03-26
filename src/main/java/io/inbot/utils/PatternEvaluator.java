@@ -11,17 +11,6 @@ import java.util.function.Function;
  *
  * Because the evaluate returns an Optional, you can emulate the otherwise bit with a simple call to orElse(...).
  *
- * <pre>
- PatternEvaluator<Integer, String> evaluator = PatternEvaluator.evaluator(
- PatternEvaluator.equals(1,input->"one"),
- PatternEvaluator.equals(2,input->"two"),
- PatternEvaluator.equals(3,input->"three"),
- PatternEvaluator.matches(input -> input>=3,input->"big")
- );
- assertThat(evaluator.evaluate(2).get()).isEqualTo("two");
- assertThat(evaluator.evaluate(20).get()).isEqualTo("big");
- * </pre>
- *
  * @param <Input> Input
  * @param <Output> Output
  */
