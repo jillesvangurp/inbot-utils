@@ -4,7 +4,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Supplier;
 
-public class ReInitializingReference<V> {
+/**
+ * Supplier that caches and re-initializes it's value. Useful to encapsulate expensive initialization logic to ensure
+ * it only gets executed if it did not run recently.
+ * @param <V> the type of the object that is supplied.
+ */
+public class ReInitializingReference<V> implements Supplier<V> {
     private volatile V instance;
     private volatile long lastInitialized=0;
     private final Supplier<V> initializer;
@@ -37,6 +42,7 @@ public class ReInitializingReference<V> {
     public void reset() {
         lock.lock();
         try {
+            // force reinitialization on next get
             lastInitialized=0;
         } finally {
             lock.unlock();
@@ -44,6 +50,6 @@ public class ReInitializingReference<V> {
     }
 
     private boolean needsReinitialization() {
-        return instance==null || System.currentTimeMillis() -lastInitialized> expirationInMillis;
+        return instance==null || System.currentTimeMillis() - lastInitialized > expirationInMillis;
     }
 }
