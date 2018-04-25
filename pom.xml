@@ -25,7 +25,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.inbot</groupId>
     <artifactId>inbot-utils</artifactId>
-    <version>1.28-SNAPSHOT</version>
+    <version>1.28</version>
 
     <name>inbot-utils</name>
     <description>Misc utility classes we use at Inbot that are probably useful for a broader public.</description>
