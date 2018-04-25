@@ -26,7 +26,7 @@ public class JwtTest {
         ECPrivateKey privateKey = (ECPrivateKey) keyPair.getPrivate();
         ECPublicKey publicKey = (ECPublicKey) keyPair.getPublic();
 
-        jwtService = new JwtTokenCreationService(privateKey, publicKey, INBOT_TEST,700);
+        jwtService = new JwtTokenCreationService(privateKey, publicKey, INBOT_TEST,10000);
         verificationService = new JwtVerificationService(publicKey, INBOT_TEST);
 
     }
@@ -58,9 +58,12 @@ public class JwtTest {
         String signature = decode.getSignature();
 
         String reconstructed = header + "." + payload + "." + signature;
-        assertThat(reconstructed).isEqualTo(token);
+        assertThat(reconstructed).isEqualTo(jwtToken);
+        // both tokens are valid
+        assertThat(verificationService.isValid(jwtToken, verification -> {})).isTrue();
         assertThat(verificationService.isValid(reconstructed, verification -> {})).isTrue();
 
+        // if we mess with the payload, the signature is no longer valid
         String tampered=header+"."+HashUtils.base64Encode(HashUtils.base64Decode(payload).replace("Alice","Bob")) + "." + signature;
         assertThat(verificationService.isValid(tampered, verification -> {})).isFalse();
     }
