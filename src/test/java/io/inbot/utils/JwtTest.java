@@ -16,13 +16,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class JwtTest {
 
     public static final String INBOT_TEST = "Inbot-Test";
+    // use the same keypair so we can make sure multi threaded test execution in surefire doesn't cause any issues; yes, this happened
+    private static final KeyPair keyPair = KeyPairUtils.generateECKeyPair();
 
     JwtTokenCreationService jwtService;
     JwtVerificationService verificationService;
 
     @BeforeMethod
     public void before() {
-        KeyPair keyPair = KeyPairUtils.generateECKeyPair();
         ECPrivateKey privateKey = (ECPrivateKey) keyPair.getPrivate();
         ECPublicKey publicKey = (ECPublicKey) keyPair.getPublic();
 
@@ -48,6 +49,7 @@ public class JwtTest {
 
     }
 
+    @Test(invocationCount = 10) // this one failed because of threading issues and surefire parallel execution; fixed by using same keypair for all tests
     public void shouldRejectTokensThatHaveBeenTamperedWith() {
         String jwtToken = jwtService.create(jwt->jwt.withSubject("Alice"));
 

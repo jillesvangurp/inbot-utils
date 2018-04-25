@@ -22,8 +22,8 @@ public class JwtVerificationService {
     }
 
     /**
-     * @param token
-     * @param verificationConsumer
+     * @param token a jwt token
+     * @param verificationConsumer a way for you to verify claims by passing in a lambda function that accepts a Verification on which you can call e.g. withSubject, withClaim, etc.
      * @return true if the token is valid
      * @throws IllegalArgumentException if token is malformed
      */
