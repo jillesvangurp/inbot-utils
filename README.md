@@ -10,7 +10,7 @@ Inbot-utils is a collection of utility classes that we use at [Inbot](http://inb
 <dependency>
   <groupId>io.inbot</groupId>
   <artifactId>inbot-utils</artifactId>
-  <version>1.26</version>
+  <version>1.28</version>
 </dependency>
 ```
 
@@ -19,7 +19,9 @@ Inbot-utils is a collection of utility classes that we use at [Inbot](http://inb
 Look at the source code and unit tests for detailed overview. Most of the utilities are straightforward to use and don't require much in terms of dependencies.
 
 Currently these classes are included:
-
+- JwtTokenCreationService helper around the auth0 JWT implementation for creating JWT tokens in a somewhat opinionated way.
+- JwtVerificationService helper to verify JWT tokens (also uses the auth0 implementation)
+- KeyPairUtils helper to make parsing and serializing elliptic curve key pairs needed for JWT a bit less tedious
 - PasswordHash: we grabbed this implementation from http://crackstation.net/hashing-security.htm and preserved the license info (also MIT). This class implements a secure way of hashing passwords with randomized salt. Don't reinvent this wheel please. Big thanks to Taylor Hornby and his friends at crackstation.net.
 - AESUtils: encrypt/decrypt blobs using AES with a randomized salt and specified key. This makes encryption easy, safe (AES cipher in CBC mode with PKCS7, 256 bit key), and free of boilerplate. Uses the bouncy-castle library so you don't have to deal with Oracle's restrictions on key length.
 - ArrayFoo: misc static methods for manipulating arrays and sets.
@@ -46,10 +48,14 @@ This code is [licensed](https://github.com/Inbot/inbot-utils/blob/master/LICENSE
 
 We welcome pullrequests but please respect that this is a small project and that we use it in production and can't change everything at will. That being said, we love your feedback, suggestions, and pull requests. All this means is that we want to keep things stable, simple, and backwards compatible unless there is a good reason otherwise.
 
-Given the nature of this project and the license, we fully understand if people want to just grab some of the code and copy it over. The license allows this and we don't mind it if you do this at all. However, if doing, so, please retain a comment acknowledging our copyright and the license. Also, drop us a mention [@inbotapp](https://twitter.com/inbotapp).
+Given the nature of this project and the license, we fully understand if people want to just grab some of the code and copy it over. The license allows this and we don't mind it if you do this at all. However, if doing, so, please retain a comment acknowledging our copyright and the license. 
 
 
 # Changelog
+- 1.28
+  - Add some helpers for creating and verifying JWT tokens and dealing with elliptic curve key pairs
+- 1.27
+  - ReinitializingReference now implements Supplier
 - 1.26
   - Add EnumUtils with some nice helper methods
 - 1.25
