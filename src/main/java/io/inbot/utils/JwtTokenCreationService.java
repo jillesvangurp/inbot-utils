@@ -48,7 +48,20 @@ public class JwtTokenCreationService {
                 .withExpiresAt(expirationTime);
         // apply any additional token customisation
         jwtBuilderConsumer.accept(builder);
-        // use the strongest algirithm;
+        return sign(builder);
+    }
+
+    public String getIssuer() {
+        return issuer;
+    }
+
+    /**
+     * Sign the jwt  builder. Use this if you want to control issueing time, expiration time, and issuer.
+     * @param builder
+     * @return jwt token.
+     */
+    public String sign(JWTCreator.Builder builder) {
+        // use the strongest algorithm;
         return builder.sign(Algorithm.ECDSA512(ecPublicKey, ecPrivateKey));
     }
 }
