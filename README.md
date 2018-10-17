@@ -2,17 +2,9 @@
 
 Inbot-utils is a collection of utility classes that we use at [Inbot](http://inbot.io). It's where we put anything reusable/valuable enough that it would be inconvenient to not have around. Check it out, there's some good stuff in here.
 
-# Install from maven cental
+# Install using jitpack.io
 
 [![Build Status](https://travis-ci.org/Inbot/inbot-utils.svg?branch=master)](https://travis-ci.org/Inbot/inbot-utils)
-
-```xml
-<dependency>
-  <groupId>io.inbot</groupId>
-  <artifactId>inbot-utils</artifactId>
-  <version>1.28</version>
-</dependency>
-```
 
 # Overview
 
@@ -52,6 +44,8 @@ Given the nature of this project and the license, we fully understand if people 
 
 
 # Changelog
+- 1.29
+  - Extract sign method in JwtTokenCreate service so users can use a custom builder.
 - 1.28
   - Add some helpers for creating and verifying JWT tokens and dealing with elliptic curve key pairs
 - 1.27
