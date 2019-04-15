@@ -1,21 +1,38 @@
-plugins {
-    id 'java'
-    id 'maven-publish'
+
+buildscript {
+
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0' // gradle dependencyUpdates -Drevision=release
+        classpath "de.thetaphi:forbiddenapis:2.6"
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:3.21.1'
+    }
 }
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+apply plugin: 'idea'
+apply plugin: 'project-report' // useful for gradle htmlDependencyReport
+apply plugin: 'com.diffplug.gradle.spotless'
+apply plugin: "de.thetaphi.forbiddenapis"
+apply plugin: 'com.github.ben-manes.versions'
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    compile 'org.bouncycastle:bcprov-jdk15on:1.55'
-    compile 'com.auth0:java-jwt:3.3.0'
+    compile 'org.bouncycastle:bcprov-jdk15on:1.61'
+    compile 'com.auth0:java-jwt:3.8.0'
     compile 'org.apache.commons:commons-lang3:3.9'
-    compile 'commons-codec:commons-codec:1.10'
-    compile 'com.google.guava:guava:21.0'
+    compile 'commons-codec:commons-codec:1.12'
+    compile 'com.google.guava:guava:27.1-jre'
     compile 'org.slf4j:slf4j-api:1.7.12'
     testCompile 'org.testng:testng:6.9.6'
-    testCompile 'org.assertj:assertj-core:3.1.0'
+    testCompile 'org.assertj:assertj-core:3.12.2'
 }
 
 task sourcesJar(type: Jar) {
@@ -49,4 +66,30 @@ tasks.withType(JavaCompile) {
 
 test {
     useTestNG()
+}
+
+forbiddenApis {
+    // https://github.com/policeman-tools/forbidden-apis/wiki/GradleUsage
+    bundledSignatures = ["jdk-unsafe-9", "jdk-deprecated-9", "jdk-non-portable", "jdk-internal-9"]
+    // "jdk-system-out"
+    signaturesFiles = files("forbidden_signatures.txt")
+    ignoreFailures = false
+}
+
+// this intentionally breaks the build if you mess up the formatting; pro tip: use Save Actions plugin in intellij and auto format and organize imports on save
+spotless {
+    java {
+        removeUnusedImports() // removes any unused imports
+    }
+    // to fix violations: gradle spotlessApply
+    // in intellij also tweak kotlin imports to require 999 imports before wildcards and remove java.util for always using wildcards
+    // do the same for java imports
+    // wildcards are verboten!
+    // currentlyb breaks offline build due to fucked up transitive dependency on ktlint & kotlin
+
+}
+
+afterEvaluate {
+    // just ffing run it, way to anal to break the build every time
+    tasks.getByName('spotlessCheck').dependsOn(tasks.getByName('spotlessApply'))
 }
