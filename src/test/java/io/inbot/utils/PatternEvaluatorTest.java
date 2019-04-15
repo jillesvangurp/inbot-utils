@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import static io.inbot.utils.PatternEvaluator.evaluator;
 import static io.inbot.utils.PatternEvaluator.matches;
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 public class PatternEvaluatorTest {

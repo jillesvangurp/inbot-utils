@@ -1,11 +1,12 @@
 package io.inbot.utils;
 
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import org.testng.annotations.Test;
 
 import java.security.SecureRandom;
 import java.util.HashSet;
 import java.util.Set;
-import org.testng.annotations.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @Test

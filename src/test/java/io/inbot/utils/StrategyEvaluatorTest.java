@@ -2,7 +2,6 @@ package io.inbot.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.inbot.utils.StrategyEvaluator;
 
 import java.util.Optional;
 import org.testng.annotations.Test;

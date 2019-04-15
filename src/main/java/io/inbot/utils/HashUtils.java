@@ -22,7 +22,7 @@ public class HashUtils {
     }
 
     public static String base64Decode(String s) {
-        byte[] bytes = Base64.decodeBase64(s.getBytes());
+        byte[] bytes = Base64.decodeBase64(s.getBytes(UTF_8));
         return new String(bytes, StandardCharsets.UTF_8);
     }
 
@@ -129,7 +129,7 @@ public class HashUtils {
      * @return formatted string with raw bits for the long number
      */
     public static String bitString(long number) {
-        return String.format("%064d", new BigInteger(Long.toBinaryString(number)));
+        return String.format(Locale.ROOT,"%064d", new BigInteger(Long.toBinaryString(number)));
     }
 
     public static String secureToken() {

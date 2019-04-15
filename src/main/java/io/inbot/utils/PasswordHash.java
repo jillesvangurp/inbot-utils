@@ -32,6 +32,7 @@ import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Locale;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
@@ -191,7 +192,7 @@ public class PasswordHash {
         String hex = bi.toString(16);
         int paddingLength = (array.length * 2) - hex.length();
         if(paddingLength > 0) {
-            return String.format("%0" + paddingLength + "d", 0) + hex;
+            return String.format(Locale.ROOT,"%0" + paddingLength + "d", 0) + hex;
         } else {
             return hex;
         }

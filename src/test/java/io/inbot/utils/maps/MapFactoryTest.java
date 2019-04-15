@@ -3,7 +3,7 @@ package io.inbot.utils.maps;
 import static io.inbot.utils.maps.MapFactory.entry;
 import static io.inbot.utils.maps.MapFactory.map;
 import static io.inbot.utils.maps.MapFactory.richMap;
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collection;
 import java.util.Map;

@@ -6,6 +6,7 @@ import java.security.SecureRandom;
 import java.security.Security;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
+import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -205,7 +206,7 @@ public class AESUtils {
      * @return the iv as a hex string followed by '$' followed by the encrypted text.
      */
     public static String encrypt(String key, String plainText) {
-        SecretKey secret = new SecretKeySpec(Base64.decodeBase64(key.getBytes()), "AES");
+        SecretKey secret = new SecretKeySpec(Base64.decodeBase64(key.getBytes(StandardCharsets.UTF_8)), "AES");
         return encryptBouncyCastle(secret, plainText);
     }
 
@@ -237,7 +238,7 @@ public class AESUtils {
     public static String byteArrayToHexString(byte[] bytes) {
         StringBuilder sb = new StringBuilder(bytes.length * 2);
         for (byte b : bytes) {
-            sb.append(String.format("%02X", b));
+            sb.append(String.format(Locale.ROOT,"%02X", b));
         }
         return sb.toString();
     }
@@ -247,7 +248,7 @@ public class AESUtils {
             // https://tools.ietf.org/html/rfc2898
             // sha1 with 1000 iterations and 256 bits is good enough here http://stackoverflow.com/questions/6126061/pbekeyspec-what-do-the-iterationcount-and-keylength-parameters-influence
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(), 1000, 256);
+            KeySpec spec = new PBEKeySpec(password.toCharArray(), salt.getBytes(StandardCharsets.UTF_8), 1000, 256);
             SecretKey tmp = factory.generateSecret(spec);
             return new SecretKeySpec(tmp.getEncoded(), "AES");
         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

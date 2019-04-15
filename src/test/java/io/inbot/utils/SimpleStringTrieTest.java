@@ -1,6 +1,6 @@
 package io.inbot.utils;
 
-import static org.assertj.core.api.StrictAssertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.beust.jcommander.internal.Lists;
 import java.util.List;
