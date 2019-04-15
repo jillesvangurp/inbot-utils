@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.bouncycastle:bcprov-jdk15on:1.55'
+    compile 'com.auth0:java-jwt:3.3.0'
+    compile 'org.apache.commons:commons-lang3:3.9'
+    compile 'commons-codec:commons-codec:1.10'
+    compile 'com.google.guava:guava:21.0'
+    compile 'org.slf4j:slf4j-api:1.7.12'
+    testCompile 'org.testng:testng:6.9.6'
+    testCompile 'org.assertj:assertj-core:3.1.0'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from(sourceSets.main.allJava)
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from(javadoc.destinationDir)
+}
+
+group = 'io.inbot'
+version = '1.30-SNAPSHOT'
+description = 'inbot-utils'
+sourceCompatibility = '1.8'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+            artifact(sourcesJar)
+            artifact(javadocJar)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useTestNG()
+}
