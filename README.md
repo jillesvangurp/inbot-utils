@@ -9,7 +9,9 @@ Inbot-utils is a collection of utility classes that we use at [Inbot](http://inb
 
 # Overview
 
-Look at the source code and unit tests for detailed overview. Most of the utilities are straightforward to use and don't require much in terms of dependencies.
+Look at the source code and unit tests for detailed overview. Most of the utility classes are straightforward to use and don't require much in terms of dependencies.
+
+Note. all dependencies are marked as compileOnly, so you have to add them to your build file. This is to make this library minimally intrusive on your build.
 
 Currently these classes are included:
 - JwtTokenCreationService helper around the auth0 JWT implementation for creating JWT tokens in a somewhat opinionated way.
