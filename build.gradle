@@ -25,14 +25,18 @@ repositories {
 }
 
 dependencies {
-    compile 'org.bouncycastle:bcprov-jdk15on:1.61'
-    compile 'com.auth0:java-jwt:3.8.0'
-    compile 'org.apache.commons:commons-lang3:3.9'
-    compile 'commons-codec:commons-codec:1.12'
-    compile 'com.google.guava:guava:27.1-jre'
-    compile 'org.slf4j:slf4j-api:1.7.12'
+    compileOnly 'org.bouncycastle:bcprov-jdk15on:1.61'
+    compileOnly 'com.auth0:java-jwt:3.8.0'
+    compileOnly 'org.apache.commons:commons-lang3:3.9'
+    compileOnly 'commons-codec:commons-codec:1.12'
+    compileOnly 'com.google.guava:guava:27.1-jre'
+    compileOnly 'org.slf4j:slf4j-api:1.7.26'
     testCompile 'org.testng:testng:6.9.6'
     testCompile 'org.assertj:assertj-core:3.12.2'
+}
+
+configurations {
+    testImplementation.extendsFrom compileOnly
 }
 
 task sourcesJar(type: Jar) {
