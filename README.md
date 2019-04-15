@@ -4,6 +4,7 @@ Inbot-utils is a collection of utility classes that we use at [Inbot](http://inb
 
 # Install using jitpack.io
 
+[![](https://jitpack.io/v/inbot/inbot-utils.svg)](https://jitpack.io/#inbot/inbot-utils)
 [![Build Status](https://travis-ci.org/Inbot/inbot-utils.svg?branch=master)](https://travis-ci.org/Inbot/inbot-utils)
 
 # Overview
@@ -44,6 +45,8 @@ Given the nature of this project and the license, we fully understand if people 
 
 
 # Changelog
+- 1.30
+  - use gradle and update some dependencies 
 - 1.29
   - Extract sign method in JwtTokenCreate service so users can use a custom builder.
 - 1.28
