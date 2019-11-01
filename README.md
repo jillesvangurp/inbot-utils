@@ -2,6 +2,10 @@
 
 Inbot-utils is a collection of utility classes that we use at [Inbot](http://inbot.io). It's where we put anything reusable/valuable enough that it would be inconvenient to not have around. Check it out, there's some good stuff in here.
 
+# Repository move to jillesvangurp
+
+Inbot the company for which I developed this library originally, is no more. So I forked the repository and put it under my own account. I will likely change the name at some point. Any future releases will be done from here.
+
 # Install using jitpack.io
 
 [![](https://jitpack.io/v/inbot/inbot-utils.svg)](https://jitpack.io/#inbot/inbot-utils)
