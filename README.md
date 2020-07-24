@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Inbot/inbot-utils.svg?branch=master)](https://travis-ci.org/Inbot/inbot-utils)
+[![](https://jitpack.io/v/jillesvangurp/inbot-utils.svg)](https://jitpack.io/#jillesvangurp/inbot-utils)
+
 # Introduction
 
 Inbot-utils is a collection of utility classes that we use at [Inbot](http://inbot.io). It's where we put anything reusable/valuable enough that it would be inconvenient to not have around. Check it out, there's some good stuff in here.
@@ -8,8 +11,7 @@ Inbot the company for which I developed this library originally, is no more. So 
 
 # Install using jitpack.io
 
-[![](https://jitpack.io/v/inbot/inbot-utils.svg)](https://jitpack.io/#inbot/inbot-utils)
-[![Build Status](https://travis-ci.org/Inbot/inbot-utils.svg?branch=master)](https://travis-ci.org/Inbot/inbot-utils)
+[![](https://jitpack.io/v/jillesvangurp/inbot-utils.svg)](https://jitpack.io/#jillesvangurp/inbot-utils)
 
 # Overview
 
