@@ -3,7 +3,7 @@
 
 # Introduction
 
-Inbot-utils is a collection of utility classes that I used at [Inbot](http://inbot.io). After Inbot shut down in 2018, I continued using it in other projects and it is still being used at my current start up [FORMATION](https://tryformation.com) 
+Inbot-utils is a collection of utility classes that I used at [Inbot](http://inbot.io). After Inbot shut down in 2018, I continued using it in other projects and it is still being used at my current start up [FORMATION](https://tryformation.com) where it serves us well.
 
 This is a gathering of small helper functions and utility classes that I created over time that I reach for on new projects.
 
@@ -15,7 +15,7 @@ It includes:
 - Some helpers for encrypting content using AES in a responsible way
 - A replacing input stream for fixing things like new lines in legacy data files
 - A String trie implementation (useful if you need autocomplete)
-- Various things that made sense before I switched to Kotlin to deal with Java's verbosity and lack of expressiveness.
+- Various things that made more sense before I switched to Kotlin to deal with Java's verbosity and lack of expressiveness.
 
 # Repository move to jillesvangurp
 
