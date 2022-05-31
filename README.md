@@ -3,11 +3,23 @@
 
 # Introduction
 
-Inbot-utils is a collection of utility classes that we use at [Inbot](http://inbot.io). It's where we put anything reusable/valuable enough that it would be inconvenient to not have around. Check it out, there's some good stuff in here.
+Inbot-utils is a collection of utility classes that I used at [Inbot](http://inbot.io). After Inbot shut down in 2018, I continued using it in other projects and it is still being used at my current start up [FORMATION](https://tryformation.com) 
+
+This is a gathering of small helper functions and utility classes that I created over time that I reach for on new projects.
+
+It includes:
+
+- Some helper functions to create various types of hashes using varargs functions
+- A decent bcrypt implementation for password hashing
+- Some helpers for dealing with JWTs
+- Some helpers for encrypting content using AES in a responsible way
+- A replacing input stream for fixing things like new lines in legacy data files
+- A String trie implementation (useful if you need autocomplete)
+- Various things that made sense before I switched to Kotlin to deal with Java's verbosity and lack of expressiveness.
 
 # Repository move to jillesvangurp
 
-Inbot the company for which I developed this library originally, is no more. So I forked the repository and put it under my own account. I will likely change the name at some point. Any future releases will be done from here.
+Inbot the company for which I developed this library originally, is no more. So I forked the repository and put it under my own account. I will likely change the name at some point. Any future releases will be done from here. I always was the main author of this and the license has stayed the same throughout (MIT).
 
 # Install using jitpack.io
 
@@ -15,7 +27,7 @@ Inbot the company for which I developed this library originally, is no more. So 
 
 # Overview
 
-Look at the source code and unit tests for detailed overview. Most of the utility classes are straightforward to use and don't require much in terms of dependencies.
+Have a look around. Most of the classes have decent tests.
 
 Note. all dependencies are marked as compileOnly, so you have to add them to your build file. This is to make this library minimally intrusive on your build.
 
