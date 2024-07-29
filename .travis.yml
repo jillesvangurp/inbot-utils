@@ -1,8 +1,0 @@
-language: java
-jdk:
-  - oraclejdk8
-
-notifications:
-  webhooks: 
-    urls:
-      - https://5laiixcwa1.execute-api.eu-west-1.amazonaws.com/1/webhooks/travis-ci
