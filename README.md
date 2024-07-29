@@ -65,6 +65,7 @@ Given the nature of this project and the license, we fully understand if people 
 
 
 # Changelog
+- 1.32 and beyond: see github release notes
 - 1.30
   - use gradle and update some dependencies 
 - 1.29
