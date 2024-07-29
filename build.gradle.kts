@@ -9,13 +9,13 @@ repositories {
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm")
+//    id("org.jetbrains.kotlin.jvm")
     id("org.jetbrains.dokka")
     id("maven-publish")
 }
 
 dependencies {
-    api(Kotlin.stdlib.jdk8)
+//    api(Kotlin.stdlib.jdk8)
 
     implementation("org.bouncycastle:bcprov-jdk15on:_")
     implementation("com.auth0:java-jwt:_")
